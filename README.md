@@ -1,1 +1,1 @@
-# BellmanFord-ShortestPath
+# Bellman-Ford's shortest path algorithm
