@@ -105,5 +105,16 @@ if __name__ == '__main__':
     distance, predecessor = Bellman_Ford(graph, source='a')
 
     print distance
+    
+    # Undirected graph
+    graph = {
+        'a': {'b': 0.1, 'c': 4, 'd': 2, 'e': 1},
+        'b': {'a': 0.1, 'c': 3, 'd': 2, 'e': 2},
+        'c': {'b': 3, 'a': 4, 'd': 5, 'e': 3},
+        'd': {'c': 5, 'b': 2, 'a': 2, 'e': 0.3},
+        'e': {'a': 1, 'b': 2, 'c': 3, 'd': 0.3},
+    }
+    distance, predecessor = Bellman_Ford(graph, source='a')
+    print distance
 
 
