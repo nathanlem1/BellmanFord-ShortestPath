@@ -116,5 +116,32 @@ if __name__ == '__main__':
     }
     distance, predecessor = Bellman_Ford(graph, source='a')
     print distance
+    
+    # Generate unigue groups from shortest paths 
+    w_comp = 1000
+    graph = {
+        'v1': {'vso': w_comp, 'vsi':w_comp, 'v2': np.inf, 'v3': np.inf, 'v4': np.inf},
+        'v2': {'vso': w_comp, 'vsi':w_comp, 'v1': np.inf, 'v3': 0.2, 'v4': np.inf},
+        'v3': {'vso': w_comp, 'vsi':w_comp, 'v1': np.inf, 'v2': 0.2, 'v4': 0.3},
+        'v4': {'vso': w_comp, 'vsi':w_comp, 'v1': np.inf, 'v2': np.inf, 'v3': 0.3},
+        'vso': {'v1': w_comp, 'v2': w_comp, 'v3': w_comp, 'v4': w_comp},   # Source node
+        'vsi': {'v1': w_comp, 'v2': w_comp, 'v3': w_comp, 'v4': w_comp},   # Sink node
+    }
+
+    distance, predecessor = Bellman_Ford(graph, source='v1')
+    print distance
+
+    groups = {}
+    for key in graph.keys():
+        distance, predecessor = Bellman_Ford(graph, source=key)
+        group = []
+        for keyd in distance.keys():
+            if keyd != 'vso' and keyd != 'vsi' and distance[keyd] < w_comp:
+                group.append(keyd)
+        if key != 'vso' and key != 'vsi':
+            groups[key] = group
+
+    groupsList = groups.values()
+    groupsList_unique = [x for i, x in enumerate(groupsList) if i == groupsList.index(x)]
 
 
