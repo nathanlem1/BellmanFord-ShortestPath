@@ -32,10 +32,7 @@ The Bellman-Ford algorithm Graph API:
     This algorithm has time complexity of O(V.E) where
     V & E are the total number of vertices (nodes) and edges in the graph, respectively.
 """
-#
-# This function was written by Nathanael L. Baisa
-# email: nathanaellmss@gmail.com
-#
+
 def Bellman_Ford(graph, source):
     # Step 1: Prepare the distance and predecessor for each node, and then initialize a graph
     distance, predecessor = dict(), dict()
